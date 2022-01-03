@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import * as Convict from 'convict';
-import { ConfigSchema, TConfigSchema } from './config.schema';
+import { ConfigSchema, ConfigEnum } from './config.schema';
 import * as dotenv from 'dotenv';
 
 @Injectable()
 export class ConfigService {
-  config: Convict.Config<TConfigSchema>;
+  config: Convict.Config<ConfigEnum>;
 
   constructor() {
     this.config = Convict(ConfigSchema);

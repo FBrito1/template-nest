@@ -1,10 +1,11 @@
 import * as Convict from 'convict';
 
-export interface TConfigSchema {
-  PORT: number;
+export enum ConfigEnum {
+  APP_TITLE = 'APP_TITLE',
+  APP_VERSION = 'APP_VERSION',
 }
 
-export const ConfigSchema: Convict.Schema<TConfigSchema> = {
+export const ConfigSchema: Convict.Schema<ConfigEnum> = {
   APP_TITLE: {
     doc: 'Application title',
     format: String,

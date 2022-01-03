@@ -17,7 +17,6 @@ export class HealthcheckController {
   @Get('complete/')
   public async checkComplete(): Promise<any> {
     try {
-      throw new Error('Not implemented');
       return this.healthcheckService.checkComplete();
     } catch (error) {
       throw new HttpException(error.response, HttpStatus.SERVICE_UNAVAILABLE);

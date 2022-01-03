@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigEnum } from '../config/config.schema';
 import { ConfigService } from '../config/config.service';
 
 @Injectable()
@@ -12,8 +13,8 @@ export class HealthcheckService {
   public async checkComplete(): Promise<any> {
     return {
       meta: {
-        name: this.configService.get('APP_TITLE'),
-        version: this.configService.get('APP_VERSION'),
+        name: this.configService.get(ConfigEnum.APP_TITLE),
+        version: this.configService.get(ConfigEnum.APP_VERSION),
       },
       status: 'ok',
       dependencies: [],
