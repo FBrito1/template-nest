@@ -1,6 +1,7 @@
 import { Controller, Get, HttpException, HttpStatus } from '@nestjs/common';
 import { HealthcheckService } from './healthcheck.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AppError, ErrorEnum } from '../shared/errors';
 
 @ApiTags('healthcheck')
 @Controller('healthcheck')
@@ -37,9 +38,10 @@ export class HealthcheckController {
   })
   public async checkComplete(): Promise<any> {
     try {
+      throw new Error('testing');
       return this.healthcheckService.checkComplete();
     } catch (error) {
-      throw new HttpException(error.response, HttpStatus.SERVICE_UNAVAILABLE);
+      throw new AppError(ErrorEnum.UNKNOWN, HttpStatus.SERVICE_UNAVAILABLE);
     }
   }
 }
