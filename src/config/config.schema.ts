@@ -3,6 +3,7 @@ import * as Convict from 'convict';
 export enum ConfigEnum {
   APP_TITLE = 'APP_TITLE',
   APP_VERSION = 'APP_VERSION',
+  APP_DESCRIPTION = 'APP_DESCRIPTION',
 }
 
 export const ConfigSchema: Convict.Schema<ConfigEnum> = {
@@ -15,5 +16,10 @@ export const ConfigSchema: Convict.Schema<ConfigEnum> = {
     doc: 'Application version',
     format: String,
     default: '0.1.0',
+  },
+  APP_DESCRIPTION: {
+    doc: 'Application description',
+    format: String,
+    default: 'Template Nest',
   },
 };
