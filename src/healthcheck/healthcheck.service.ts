@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigEnum } from '../config/config.schema';
-import { ConfigService } from '../config/config.service';
+import { ConfigEnum, ConfigService } from '../config';
 
 @Injectable()
 export class HealthcheckService {

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import * as Convict from 'convict';
+import Convict from 'convict';
 import { ConfigSchema, ConfigEnum } from './config.schema';
 import * as dotenv from 'dotenv';
 
