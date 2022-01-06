@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigEnum, ConfigService } from '../config';
+import { ConfigService } from '@nestjs/config';
+import { EnvironmentVariables } from '../config/configuration';
 
 @Injectable()
 export class HealthcheckService {
-  constructor(private readonly configService: ConfigService) {}
+  constructor(
+    private readonly configService: ConfigService<EnvironmentVariables>,
+  ) {}
 
   public async check(): Promise<any> {
     return { status: 'ok' };
@@ -12,8 +15,8 @@ export class HealthcheckService {
   public async checkComplete(): Promise<any> {
     return {
       meta: {
-        name: this.configService.get(ConfigEnum.APP_TITLE),
-        version: this.configService.get(ConfigEnum.APP_VERSION),
+        name: this.configService.get('APP_TITLE'),
+        version: this.configService.get('APP_VERSION'),
       },
       status: 'ok',
       dependencies: [],

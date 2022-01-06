@@ -1,3 +1,4 @@
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import {
   FastifyAdapter,
@@ -7,7 +8,7 @@ import compression from 'fastify-compress';
 import helmet from 'fastify-helmet';
 import { AppClusterService } from './app-cluster.service';
 import { AppModule } from './app.module';
-import { ConfigService, ConfigEnum } from './config';
+import { EnvironmentVariables } from './config/configuration';
 import { setupSwagger } from './shared/docs/setupSwagger';
 
 async function bootstrap() {
@@ -15,7 +16,8 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(),
   );
-  const configService: ConfigService = app.get(ConfigService);
+  const configService: ConfigService<EnvironmentVariables> =
+    app.get(ConfigService);
   app.enableCors();
   app.register(compression);
   app.register(helmet, {
@@ -30,7 +32,7 @@ async function bootstrap() {
   });
 
   setupSwagger(app);
-  await app.listen(configService.get(ConfigEnum.APP_PORT));
+  await app.listen(configService.get('APP_PORT'));
 }
 
 AppClusterService.clusterize(bootstrap);

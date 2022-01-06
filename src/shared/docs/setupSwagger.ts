@@ -1,19 +1,20 @@
 /* istanbul ignore file */
 
 import { INestApplication } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ConfigEnum } from '../../config/config.schema';
-import { ConfigService } from '../../config/config.service';
+import { EnvironmentVariables } from '../../config/configuration';
 
 const DEFAULT_SWAGGER_PREFIX = '/swagger';
 
 export const setupSwagger = (app: INestApplication) => {
-  const configService: ConfigService = app.get(ConfigService);
+  const configService: ConfigService<EnvironmentVariables> =
+    app.get(ConfigService);
 
   const options = new DocumentBuilder()
-    .setTitle(configService.get(ConfigEnum.APP_TITLE))
-    .setDescription(configService.get(ConfigEnum.APP_DESCRIPTION))
-    .setVersion(configService.get(ConfigEnum.APP_VERSION))
+    .setTitle(configService.get('APP_TITLE'))
+    .setDescription(configService.get('APP_DESCRIPTION'))
+    .setVersion(configService.get('APP_VERSION'))
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

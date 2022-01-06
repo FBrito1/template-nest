@@ -3,7 +3,7 @@ import * as os from 'os';
 import { Injectable } from '@nestjs/common';
 
 const numCPUs = os.cpus().length;
-const APP_CPUS_LIMIT = process.env.APP_CPUS_LIMIT || 2;
+const APP_CPUS_LIMIT = process.env.APP_CPUS_LIMIT || 1;
 
 @Injectable()
 export class AppClusterService {
