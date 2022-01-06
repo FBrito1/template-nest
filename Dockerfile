@@ -47,8 +47,6 @@ FROM node:16-alpine
 
 ENV NODE_ENV=production
 
-# Timezone
-ENV TZ=America/Sao_Paulo
 
 RUN apk add --no-cache tzdata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
