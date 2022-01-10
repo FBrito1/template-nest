@@ -1,7 +1,14 @@
-import { Controller, Get, HttpException, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  UseInterceptors,
+} from '@nestjs/common';
 import { HealthcheckService } from './healthcheck.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AppError, ErrorEnum } from '../shared/errors';
+import { ResponseInterceptor } from '../shared/interceptors';
 
 @ApiTags('healthcheck')
 @Controller('healthcheck')
@@ -18,6 +25,7 @@ export class HealthcheckController {
     status: 503,
     description: 'Service Unavailable.',
   })
+  @UseInterceptors(new ResponseInterceptor())
   public async check(): Promise<any> {
     try {
       return this.healthcheckService.check();
@@ -36,6 +44,7 @@ export class HealthcheckController {
     status: 503,
     description: 'Service Unavailable.',
   })
+  @UseInterceptors(new ResponseInterceptor())
   public async checkComplete(): Promise<any> {
     try {
       throw new Error('testing');

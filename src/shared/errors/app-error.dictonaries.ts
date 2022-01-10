@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { ErrorEnum } from './error.enum';
+import { ErrorEnum } from './app-error.enum';
 
 export type ErrorDictResponse = {
   responseCode: string;
