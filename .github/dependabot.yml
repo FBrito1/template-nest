@@ -1,8 +1,11 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "08:00"
-  open-pull-requests-limit: 10
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: daily
+      time: '08:00'
+    ignore:
+      # ignore all GitHub linguist patch updates
+      - dependency-name: 'github-linguist'
+        update-types: ['version-update:semver-minor', 'version-update:semver-patch']

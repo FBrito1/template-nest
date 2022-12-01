@@ -2,7 +2,7 @@ name: Fortify
 
 on:
   push:
-    branches: [main]
+    branches: [develop]
 
 jobs:
   fortify:
@@ -30,13 +30,13 @@ jobs:
         with:
           api_credentials: '${{ env.USERF }}'
           application_name: '${{ github.repository }}'
-          application_version: 'main'
+          application_version: 'develop'
       - name: SAST
         uses: ./.github/fortify-action-sast
         id: SAST
         with:
           application_name: '${{ github.repository }}'
-          application_version: 'main'
+          application_version: 'develop'
           client_token: '${{ env.SCANCENTRAL }}'
           ci_token: '${{ env.CITOKEN }}'
           language_profile: other

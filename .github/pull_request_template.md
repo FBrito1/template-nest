@@ -2,8 +2,12 @@
  - Resumo do PR.
 
 # Checklist (O que foi feito?) :white_check_mark:
-- [x] Alteração X.
-- [x] Alteração Y.
+- [ ] Criou fragments.
+- [ ] Criou teste unitários.
+- [ ] Realizou o teste local.
+- [ ] Criou teste integrados.
+- [ ] Criou documentação swagger.
+- [ ] Criou/atualizou documentação no google sites
 
 # Quais casos consigo testar? :heavy_check_mark:
 1. Caso A.
@@ -13,4 +17,4 @@
 n/a
 
 # Link do JIRA? :pencil2:
-MRD-XXX - Link da tarefa no Jira
+MRD-XXX - [Link da tarefa no Jira]
